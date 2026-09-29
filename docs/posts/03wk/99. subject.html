@@ -259,6 +259,22 @@ window.Quarto = {
   <li><a href="#sol-1" id="toc-sol-1" class="nav-link" data-scroll-target="#sol-1">sol</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#번-2" id="toc-번-2" class="nav-link" data-scroll-target="#번-2">5번</a>
+  <ul class="collapse">
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">(1)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">(2)</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">(3)</a>
+  <ul class="collapse">
+  <li><a href="#sol-2" id="toc-sol-2" class="nav-link" data-scroll-target="#sol-2">sol</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#번-3" id="toc-번-3" class="nav-link" data-scroll-target="#번-3">7번</a>
+  <ul class="collapse">
+  <li><a href="#연구배경-2" id="toc-연구배경-2" class="nav-link" data-scroll-target="#연구배경-2">1. 연구배경</a>
+  <ul class="collapse">
+  <li><a href="#연구질문" id="toc-연구질문" class="nav-link" data-scroll-target="#연구질문">연구질문</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -984,9 +1000,540 @@ RUN;</code></pre>
 </div>
 </div>
 </div>
-
-
+<hr>
 </section>
+</section>
+</section>
+</section>
+<section id="번-2" class="level1">
+<h1>5번</h1>
+<p>문제 5번 자료는 최근 스트레스 총량인 <strong>SRRS 점수 수준(저: Low, 중: Med, 고: High)</strong> 에 따른 전이성 폐암 환자의 <strong>NK 세포활동(Natural Killer cell activity)</strong> 측정값 데이터입니다.</p>
+<details>
+<summary>
+자료 생성 코드
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="dv">1</span><span class="er">단계</span>: SAS 임시 데이터셋(WORK.ex3_5) 생성 <span class="op">*/</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>DATA ex3_5<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    INPUT group $ activity <span class="op">@@;</span> <span class="op">/*</span> group: SRRS 수준, activity: NK 세포활동 수치 <span class="op">*/</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    DATALINES<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>L <span class="fl">22.2</span> L <span class="fl">97.8</span> L <span class="fl">29.1</span> L <span class="fl">37.0</span> L <span class="fl">35.8</span> L <span class="fl">44.2</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>L <span class="fl">82.0</span> L <span class="fl">56.0</span> L <span class="fl">9.3</span> L <span class="fl">19.9</span> L <span class="fl">39.5</span> L <span class="fl">12.8</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>M <span class="fl">15.1</span> M <span class="fl">23.2</span> M <span class="fl">10.5</span> M <span class="fl">13.9</span> M <span class="fl">9.7</span> M <span class="fl">19.0</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>M <span class="fl">19.8</span> M <span class="fl">9.1</span> M <span class="fl">30.1</span> M <span class="fl">15.5</span> M <span class="fl">10.3</span> M <span class="fl">11.0</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>H <span class="fl">10.2</span> H <span class="fl">11.3</span> H <span class="fl">11.4</span> H <span class="fl">5.3</span> H <span class="fl">14.5</span> H <span class="fl">11.0</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>H <span class="fl">13.6</span> H <span class="fl">33.4</span> H <span class="fl">25.0</span> H <span class="fl">27.0</span> H <span class="fl">36.3</span> H <span class="fl">17.7</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="dv">2</span><span class="er">단계</span>: 폴더 라이브러리 등록 및 SAS 영구 데이터셋 저장 <span class="op">*/</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>LIBNAME mylib <span class="st">"/home/u64600079/03wk/data"</span><span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>DATA mylib.ex3_5<span class="op">;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    SET ex3_5<span class="op">;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="dv">3</span><span class="er">단계</span>: 입력 결과 및 데이터 구조 확인 <span class="op">*/</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>PROC PRINT DATA<span class="op">=</span>ex3_5(OBS<span class="op">=</span><span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">번호</th>
+<th style="text-align: center;">저(<span class="math inline">\(\le 54\)</span>)</th>
+<th style="text-align: center;">중(<span class="math inline">\(55\sim 99\)</span>)</th>
+<th style="text-align: center;">고(<span class="math inline">\(\ge 100\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">22.2</td>
+<td style="text-align: center;">15.1</td>
+<td style="text-align: center;">10.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">97.8</td>
+<td style="text-align: center;">23.2</td>
+<td style="text-align: center;">11.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">29.1</td>
+<td style="text-align: center;">10.5</td>
+<td style="text-align: center;">11.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">37.0</td>
+<td style="text-align: center;">13.9</td>
+<td style="text-align: center;">5.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">35.8</td>
+<td style="text-align: center;">9.7</td>
+<td style="text-align: center;">14.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">44.2</td>
+<td style="text-align: center;">19.0</td>
+<td style="text-align: center;">11.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">82.0</td>
+<td style="text-align: center;">19.8</td>
+<td style="text-align: center;">13.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">56.0</td>
+<td style="text-align: center;">9.1</td>
+<td style="text-align: center;">33.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">9.3</td>
+<td style="text-align: center;">30.1</td>
+<td style="text-align: center;">25.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">19.9</td>
+<td style="text-align: center;">15.5</td>
+<td style="text-align: center;">27.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">39.5</td>
+<td style="text-align: center;">10.3</td>
+<td style="text-align: center;">36.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">12.8</td>
+<td style="text-align: center;">11.0</td>
+<td style="text-align: center;">17.7</td>
+</tr>
+</tbody>
+</table>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">(1)</h2>
+<p>귀무가설과 대립가설을 세우라.</p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">(2)</h2>
+<p>분산분석표를 작성하라.</p>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">(3)</h2>
+<p>위 (1)의 가설을 유의수준 5%로 SAS를 이용하여 검정하여라.</p>
+<section id="sol-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-2">sol</h3>
+<section id="연구배경-1" class="level4">
+<h4 class="anchored" data-anchor-id="연구배경-1">1. 연구배경</h4>
+<p><code>1</code> 생활사건이 유발하는 심리적 스트레스가 면역기능에 영향을 미치는지 밝히는 것은 심신의학(Psychosomatic Medicine)의 핵심 연구 주제이다</p>
+<p><code>2</code> 본 연구는 전이성 폐암(Metastatic lung cancer) 환자 36명(<span class="math inline">\(N=36\)</span>)을 대상으로 최근 생활 스트레스 총량을 반영하는 SRRS(Social Readjustment Rating Scale) 점수를 측정하여</p>
+<p><code>3</code> 저(<span class="math inline">\(\le 54\)</span>), 중(<span class="math inline">\(55 \sim 99\)</span>), 고(<span class="math inline">\(\ge 100\)</span>) 세 집단(각 <span class="math inline">\(n_i = 12\)</span>)으로 분류하고, 면역기능 지표인 NK 세포활동(Natural Killer cell activity) 수치를 측정하였다.</p>
+<p><strong>연구질문</strong>: <strong>SRRS 스트레스 수준(저, 중, 고)에 따라 환자들의 NK 세포활동 평균에 차이가 있는가? 차이가 있다면 어느 집단 사이에 존재하는가?</strong></p>
+</section>
+<section id="가설설정-소문제1-답변" class="level4">
+<h4 class="anchored" data-anchor-id="가설설정-소문제1-답변">2. 가설설정 (소문제(1) 답변)</h4>
+<p><code>1</code> 통계적 모형</p>
+<p><span class="math display">\[y_{ij} = \mu + \tau_i + \varepsilon_{ij} \quad (i = 1: \text{저}, \; 2: \text{중}, \; 3: \text{고}; \quad j = 1, \dots, 12), \quad \varepsilon_{ij} \overset{iid}{\sim} N(0, \sigma^2)\]</span></p>
+<p><code>2</code> 가설설정</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 \quad \text{vs} \quad H_1: \text{not }H_0\]</span></p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: 세 스트레스 집단의 <code>NK 세포활동 모평균이 모두 같다</code>.</p></li>
+<li><p><span class="math inline">\(H_1\)</span>: 적어도 한 집단의 <code>NK 세포활동 모평균은 다른 집단과 다르다</code></p></li>
+</ul>
+</section>
+<section id="eda-1" class="level4">
+<h4 class="anchored" data-anchor-id="eda-1">3. EDA</h4>
+<p>SRRS 점수별 각 집단은 총 12명씩으로, 총 36명의 기술통계량과 분포 특성을 파악하였다.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">기술통계표</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">box</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false" href="">hist</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false" href="">Q-Q plot1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-5" role="tab" aria-controls="tabset-6-5" aria-selected="false" href="">Q-Q plot2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-6" role="tab" aria-controls="tabset-6-6" aria-selected="false" href="">전제조건 점검(정규성 &amp; 등분산)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-7" role="tab" aria-controls="tabset-6-7" aria-selected="false" href="">EDA 분석 코드</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>SRRS 집단</th>
+<th>표본수(<span class="math inline">\(n\)</span>)</th>
+<th>평균 (<span class="math inline">\(\bar{x}\)</span>)</th>
+<th>표준편차 (<span class="math inline">\(s\)</span>)</th>
+<th>분산 (<span class="math inline">\(s^2\)</span>)</th>
+<th>최솟값</th>
+<th>중앙값</th>
+<th>최댓값</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>저 (<span class="math inline">\(\le 54\)</span>)</td>
+<td>12</td>
+<td>40.47</td>
+<td>26.84</td>
+<td>720.43</td>
+<td>9.3</td>
+<td>36.40</td>
+<td>97.8</td>
+</tr>
+<tr class="even">
+<td>중 (<span class="math inline">\(55 \sim 99\)</span>)</td>
+<td>12</td>
+<td>15.60</td>
+<td>6.42</td>
+<td>41.15</td>
+<td>9.1</td>
+<td>14.50</td>
+<td>30.1</td>
+</tr>
+<tr class="odd">
+<td>고 (<span class="math inline">\(\ge 100\)</span>)</td>
+<td>12</td>
+<td>18.06</td>
+<td>9.97</td>
+<td>99.39</td>
+<td>5.3</td>
+<td>14.05</td>
+<td>36.3</td>
+</tr>
+</tbody>
+</table>
+<p><code>1</code> “저 SRRS 집단”의 NK 세포활동 평균(<span class="math inline">\(40.47\)</span>)이 다른 두 집단에 비해 현저히 높고 표준편차도 컸다.</p>
+<p><code>2</code> 이는 “저 집단 내” 관측치 하나(<span class="math inline">\(97.8\)</span>)가 다소 높게 측정된 영향으로 판단된다.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<center>
+<img src="3-5. box.PNG" width="600">
+</center>
+<p><code>1</code> <strong>위치(중앙값) 비교</strong>: 저 스트레스 집단(L, 빨간색 상자)의 중앙값(<strong>36.40</strong>)이 고 집단(H, 파란색 상자, <strong>14.05</strong>) 및 중 집단(M, 청록색 상자, <strong>14.50</strong>)에 비해 현저히 높게 형성</p>
+<p><code>2</code> <strong>산포 및 변동성</strong>: 저 집단은 상자의 높이(IQR = <strong>25.43</strong>)와 수염(Whisker)의 길이가 다른 두 집단에 비해 월등히 넓어 산포가 큼을 보여줌.</p>
+<p><code>3</code> <strong>이상치(Outlier) 관측</strong>: 저 집단(L)에서 수치 <strong>97.8</strong>이 상단 울타리(Upper Fence)를 벗어나는 극단적 이상치(Outlier, 상단 빨간 원)로 관측되었다. 고(H) 및 중(M) 집단에서는 이상치가 관측되지 않았다.</p>
+</div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<center>
+<img src="3-5. hist.PNG" width="600">
+</center>
+<p><code>1</code> <strong>중 집단(M, 청록색)</strong>: 10~20 구간에 관측치가 60% 이상 밀집하여 매우 높고 뾰족한 정규밀도 곡선을 형성한다. <code>2</code> <strong>고 집단(H, 파란색)</strong>: 10~20 구간을 중심으로 중심경향성을 보이며 적절한 퍼짐을 갖는 정규밀도 곡선을 나타낸다. <code>3</code> <strong>저 집단(L, 빨간색)</strong>: 0부터 100까지 데이터가 넓게 펼쳐져 완만하고 평평한 형태의 정규밀도 곡선을 형성하며, 우측으로 길게 늘어진 양상을 보인다.</p>
+<p><span class="math inline">\(\divideontimes\)</span> <strong>등분산 위반 징후</strong>: 세 집단의 정규밀도 곡선 폭(분산) 차이가 매우 커, 분석 전 등분산성 검정(Homogeneity of Variance Test)이 필수적임을 시각적으로 확인</p>
+</div>
+<div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
+<center>
+<img src="3-5. qq1.PNG" width="600">
+</center>
+<p><code>1</code> 기울기 의미: 이론적 정규 분위수(Theoretical Quantiles) 대비 관측 수치(Sample Quantiles) 회귀선의 기울기는 집단의 표준편차(<span class="math inline">\(s\)</span>)에 비례한다. L 집단(빨간선)의 기울기가 가장 가파르고, M 집단(청록선)과 H 집단(파란선)의 기울기는 완만하다.</p>
+<p><code>2</code> <strong>정규성 적합도</strong>: 세 집단 모두 관측 점들이 각자의 직선 근처에 비교적 잘 정렬되어 있어 정규성 가정을 크게 벗어나지 않는다.</p>
+</div>
+<div id="tabset-6-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-5-tab">
+<center>
+<img src="3-5. qq2.PNG" width="600">
+</center>
+<p><code>1</code> <strong>그룹 H (고 스트레스)</strong>: 관측점들이 직선 위에 매끄럽게 밀착되어 정규 분포에 매우 잘 부합한다.</p>
+<p><code>2</code> <strong>그룹 L (저 스트레스)</strong>: 관측점들이 대체로 직선을 따르나, 오른쪽 상단 끝점(<strong>97.8</strong>)이 위로 솟아올라 정규분포의 상단 꼬리가 다소 두꺼움을 보여준다.</p>
+<p><code>3</code> <strong>그룹 M (중 스트레스)</strong>: 모든 관측점이 직선 위에 일직선으로 완벽하게 배열되어 우수한 정규성을 보인다.</p>
+</div>
+<div id="tabset-6-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-6-tab">
+<table class="table">
+<thead>
+<tr class="header">
+<th>전제조건</th>
+<th>점검방법</th>
+<th>통계량</th>
+<th>p 값</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>정규성(저)</td>
+<td>Shapiro-Wilk</td>
+<td>W = 0.90</td>
+<td>0.1555</td>
+<td>기각 못 함</td>
+</tr>
+<tr class="even">
+<td>정규성(중)</td>
+<td>Shapiro-Wilk</td>
+<td>W = 0.89</td>
+<td>0.1019</td>
+<td>기각 못 함</td>
+</tr>
+<tr class="odd">
+<td>정규성(고)</td>
+<td>Shapiro-Wilk</td>
+<td>W = 0.89</td>
+<td>0.1243</td>
+<td>기각 못 함</td>
+</tr>
+<tr class="even">
+<td>잔차 정규성</td>
+<td>Shapiro-Wilk</td>
+<td>W = 0.88</td>
+<td>0.0008</td>
+<td>정규성 기각</td>
+</tr>
+<tr class="odd">
+<td>등분산성</td>
+<td>Levene(평균 중심)</td>
+<td>F = 6.39</td>
+<td>0.0045</td>
+<td>등분산 기각</td>
+</tr>
+<tr class="even">
+<td>등분산성</td>
+<td>Bartlett</td>
+<td><span class="math inline">\(\chi^2 = 22.01\)</span></td>
+<td>&lt;0.0001</td>
+<td>등분산 기각</td>
+</tr>
+</tbody>
+</table>
+<p><code>1</code> <strong>Shapiro-Wilk 정규성 검정</strong>: 세 집단 모두 유의수준 5%에서 귀무가설(정규분포를 따른다)을 기각하지 못하여 <strong>정규성 가정을 충족</strong></p>
+<p><code>2</code> 등분산성 검정 (Levene / Bartlett Test) - 저 집단의 큰 분산(<span class="math inline">\(s^2 = 720.43\)</span>)으로 인해 등분산 가정이 기각되었다. - 따라서 <code>표준 일원분산분석표</code>와 함께 등분산 위반에 강건한 <strong>Welch 분산분석</strong> 및 비모수 <strong>Kruskal-Wallis 검정</strong>을 교차 검증으로 제시한다.</p>
+</div>
+<div id="tabset-6-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-7-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">/******************************************************************</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> <span class="op">*</span> <span class="fl">1.</span> 세 그룹 오버레이 히스토그램 (단일 그래프)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="op">******************************************************************/</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>PROC SGPLOT DATA<span class="op">=</span>ex3_5<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    HISTOGRAM activity <span class="op">/</span> GROUP<span class="op">=</span>group TRANSPARENCY<span class="op">=</span><span class="fl">0.4</span><span class="op">;</span> <span class="op">/*</span> 그룹별 색상 구분 및 반투명 처리 <span class="op">*/</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    DENSITY activity <span class="op">/</span> GROUP<span class="op">=</span>group TYPE<span class="op">=</span>NORMAL<span class="op">;</span>        <span class="op">/*</span> 그룹별 정규곡선 오버레이 <span class="op">*/</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    XAXIS LABEL<span class="op">=</span><span class="st">"NK 세포활동 수치"</span><span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    YAXIS LABEL<span class="op">=</span><span class="st">"비율 (%)"</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    TITLE <span class="st">"SRRS 그룹별 NK 세포활동 오버레이 히스토그램"</span><span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">/******************************************************************</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a> <span class="op">*</span> <span class="fl">2.</span> 그룹별 색상 구분 상자그림 (단일 그래프)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a> <span class="op">******************************************************************/</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> CATEGORY<span class="op">=</span>group GROUP<span class="op">=</span>group 옵션을 함께 지정하면, x축에 세 그룹이 배치되면서 각각 고유한 색상(범례 포함)으로 채워집니다. <span class="op">*/</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>PROC SGPLOT DATA<span class="op">=</span>ex3_5<span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    VBOX activity <span class="op">/</span> CATEGORY<span class="op">=</span>group GROUP<span class="op">=</span>group<span class="op">;</span> <span class="op">/*</span> 그룹별 색상 구분 상자그림 <span class="op">*/</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    XAXIS LABEL<span class="op">=</span><span class="st">"SRRS 스트레스 수준"</span><span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    YAXIS LABEL<span class="op">=</span><span class="st">"NK 세포활동 수치"</span> GRID<span class="op">;</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    TITLE <span class="st">"SRRS 그룹별 NK 세포활동 상자그림"</span><span class="op">;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="op">/******************************************************************</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a> <span class="op">*</span> <span class="fl">3.</span> 오버레이 Q<span class="op">-</span>Q 플롯 (단일 그래프)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a> <span class="op">******************************************************************/</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="dv">1</span><span class="er">단계</span>: PROC RANK를 통한 그룹별 이론적 정규 분위수(z_score) 산출 <span class="op">*/</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>PROC SORT DATA<span class="op">=</span>ex3_5<span class="op">;</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    BY group<span class="op">;</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>PROC RANK DATA<span class="op">=</span>ex3_5 NORMAL<span class="op">=</span>BLOM OUT<span class="op">=</span>ex3_5_qq<span class="op">;</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    BY group<span class="op">;</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    VAR activity<span class="op">;</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    RANKS z_score<span class="op">;</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="dv">2</span><span class="er">단계</span>: 단일 그래프에 세 그룹의 Q<span class="op">-</span>Q 관측점 및 기준선 오버레이 <span class="op">*/</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>PROC SGPLOT DATA<span class="op">=</span>ex3_5_qq<span class="op">;</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    SCATTER X<span class="op">=</span>z_score Y<span class="op">=</span>activity <span class="op">/</span> GROUP<span class="op">=</span>group<span class="op">;</span>               <span class="op">/*</span> 그룹별 색상 산점도 <span class="op">*/</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    REG X<span class="op">=</span>z_score Y<span class="op">=</span>activity <span class="op">/</span> GROUP<span class="op">=</span>group NOMARKERS<span class="op">;</span>         <span class="op">/*</span> 그룹별 기준 직선 <span class="op">*/</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    XAXIS LABEL<span class="op">=</span><span class="st">"이론적 정규 분위수 (Theoretical Quantiles)"</span><span class="op">;</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    YAXIS LABEL<span class="op">=</span><span class="st">"관측된 NK 세포활동 수치 (Sample Quantiles)"</span> GRID<span class="op">;</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    TITLE <span class="st">"SRRS 그룹별 NK 세포활동 오버레이 Q-Q 플롯"</span><span class="op">;</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="op">/******************************************************************</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a> <span class="op">*</span> 참고: <span class="dv">1</span><span class="er">행</span> <span class="dv">3</span><span class="er">열</span> 가로 배치 패널 Q<span class="op">-</span>Q 플롯</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a> <span class="op">******************************************************************/</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> Q<span class="op">-</span>Q 플롯을 한 그래프에 겹치는 것보다 가로 <span class="dv">1</span><span class="er">줄로</span> 나누어 보고 싶을 때 사용 <span class="op">*/</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>PROC SGPANEL DATA<span class="op">=</span>ex3_5_qq<span class="op">;</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>    PANELBY group <span class="op">/</span> ROWS<span class="op">=</span><span class="dv">1</span> COLUMNS<span class="op">=</span><span class="dv">3</span><span class="op">;</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    SCATTER X<span class="op">=</span>z_score Y<span class="op">=</span>activity <span class="op">/</span> GROUP<span class="op">=</span>group<span class="op">;</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    REG X<span class="op">=</span>z_score Y<span class="op">=</span>activity <span class="op">/</span> GROUP<span class="op">=</span>group NOMARKERS<span class="op">;</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>    COLAXIS LABEL<span class="op">=</span><span class="st">"이론적 분위수"</span><span class="op">;</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>    ROWAXIS LABEL<span class="op">=</span><span class="st">"관측 수치"</span><span class="op">;</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="분석모형적합-결과해석-소문제2-3번-답변" class="level4">
+<h4 class="anchored" data-anchor-id="분석모형적합-결과해석-소문제2-3번-답변">4. 분석/모형적합 &amp; 결과해석 (소문제(2), (3)번 답변)</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href=""><strong>ANOVA Table</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Tukey HSD 다중비교</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false" href="">보완 검정</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false" href="">SAS 코드</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>변동요인 (Source)</th>
+<th>제곱합 (SS)</th>
+<th>자유도 (df)</th>
+<th>평균제곱 (MS)</th>
+<th>F 통계량</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>집단 간 (Between Groups / 처리)</td>
+<td>4,506.11</td>
+<td>2</td>
+<td>2,253.06</td>
+<td>7.85</td>
+<td>0.0016</td>
+</tr>
+<tr class="even">
+<td>집단 내 (Within Groups / 오차)</td>
+<td>9,470.72</td>
+<td>33</td>
+<td>286.99</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>합계 (Total)</td>
+<td>13,976.83</td>
+<td>35</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[F = \frac{MSTr}{MSE} = \frac{2,253.06}{286.99} = 7.85 \quad (df_1 = 2, \; df_2 = 33)\]</span></p>
+<p><code>1</code> F 통계량 및 p-value: <span class="math inline">\(F(2, 33) = 7.85, \; p = 0.0016 &lt; 0.05\)</span></p>
+<p><code>2</code> <span class="math inline">\(p\)</span>-값이 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>보다 현저히 작으므로 귀무가설 <span class="math inline">\(H_0\)</span>를 기각한다.</p>
+<ul>
+<li>즉, SRRS 스트레스 수준에 따라 환자의 NK 세포활동 평균에는 통계적으로 유의한 차이가 존재한다.</li>
+</ul>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<table class="table">
+<thead>
+<tr class="header">
+<th>비교 집단</th>
+<th>평균차</th>
+<th><span class="math inline">\(p\text{-adj}\)</span></th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>저 집단 vs 중 집단</td>
+<td>24.87</td>
+<td><strong>0.0029</strong></td>
+<td>통계적으로 유의함</td>
+</tr>
+<tr class="even">
+<td>저 집단 vs 고 집단</td>
+<td>22.41</td>
+<td><strong>0.0075</strong></td>
+<td>통계적으로 유의함</td>
+</tr>
+<tr class="odd">
+<td>중 집단 vs 고 집단</td>
+<td>-2.46</td>
+<td><strong>0.9329</strong></td>
+<td>유의한 차이 없음</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<ul>
+<li><strong>Welch 분산분석</strong>: <span class="math inline">\(F(2, 20.3) = 6.22, \; p = 0.0078 &lt; 0.05\)</span></li>
+<li><strong>Kruskal-Wallis 비모수 검정</strong>: <span class="math inline">\(\chi^2(2) = 9.77, \; p = 0.0076 &lt; 0.05\)</span></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>해석</strong>: 등분산 가정을 완화하거나 배제한 대안적 통계 검정에서도 동일하게 유의수준 5%에서 집단 간 유의한 차이가 입증되어 분석 결론이 매우 안정적이다.</p>
+</blockquote>
+</div>
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> (<span class="dv">1</span>) 일원분산분석 <span class="op">+</span> 등분산 검정 <span class="op">+</span> Tukey 다중비교 <span class="op">*/</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>PROC GLM DATA<span class="op">=</span>nk<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> CLASS group<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> MODEL activity <span class="op">=</span> group<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> MEANS group <span class="op">/</span> HOVTEST<span class="op">=</span>LEVENE TUKEY<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>QUIT<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> (<span class="dv">2</span>) 정규성 점검: 잔차 저장 후 Shapiro<span class="op">-</span>Wilk <span class="op">*/</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>PROC GLM DATA<span class="op">=</span>nk<span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> CLASS group<span class="op">;</span> MODEL activity <span class="op">=</span> group<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> OUTPUT OUT<span class="op">=</span>out R<span class="op">=</span>resid<span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>QUIT<span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="op">=</span>out NORMAL<span class="op">;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a> VAR resid<span class="op">;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> (<span class="dv">3</span>) 비모수 대안 <span class="op">*/</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>PROC NPAR1WAY DATA<span class="op">=</span>nk WILCOXON<span class="op">;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a> CLASS group<span class="op">;</span> VAR activity<span class="op">;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="결론-2" class="level4">
+<h4 class="anchored" data-anchor-id="결론-2">5. 결론</h4>
+<p><code>1</code> 일원분산분석(모형 <span class="math inline">\(y_{ij} = \mu + \tau_i + \varepsilon_{ij}\)</span>)을 이용하여 SRRS 저·중·고 세 집단 환자의 NK 세포활동을 비교하였다.</p>
+<p><code>2</code> 세 집단의 평균은 각각 저 집단 <span class="math inline">\(40.47 \pm 26.84\)</span>, 중 집단 <span class="math inline">\(15.60 \pm 6.42\)</span>, <strong>고 집단 <span class="math inline">\(18.06 \pm 9.97\)</span></strong>이었다.</p>
+<p><code>3</code> 분산분석 결과 <span class="math inline">\(F(2, 33) = 7.85, \; p = 0.0016\)</span>으로 유의수준 5%하에서 통계적으로 유의한 차이가 있었고,</p>
+<p><code>4</code> Tukey 다중비교 결과, 스트레스가 가장 낮은 ‘저’ 집단의 NK 세포활동 수치가 ‘중’ 집단(<span class="math inline">\(p = 0.0029\)</span>) 및 ‘고’ 집단(<span class="math inline">\(p = 0.0075\)</span>)보다 통계적으로 유의하게 높았으며, ‘중’ 집단과 ‘고’ 집단 사이에는 유의한 차이가 없었다(<span class="math inline">\(p = 0.9329\)</span>).</p>
+<p><code>5</code> 따라서 생활 스트레스 수치가 낮은 환자일수록 면역기능 지표인 NK 세포활동 능력이 평균적으로 높게 유지됨이 통계적으로 유의미하다는 것을 입증했다.</p>
+<hr>
+</section>
+</section>
+</section>
+</section>
+<section id="번-3" class="level1">
+<h1>7번</h1>
+<p>식이요법과 운동방법이 체중 감량에 미치는 영향분석</p>
+<section id="연구배경-2" class="level2">
+<h2 class="anchored" data-anchor-id="연구배경-2">1. 연구배경</h2>
+<p>다이어트 연구자가 20명의 참가지(<code>N=20</code>)를 대상으로 **‘운동방법 5가지(A, B, C, D, E)’**와 **‘식이요법 4가지(Ⅰ, Ⅱ, Ⅲ, Ⅳ)’**의 조합(총 20개 셀)에 각 1명씩 임의 배정하고, 3주간 처치 후 체중 감량(kg)을 측정하였다.</p>
+<section id="연구질문" class="level3">
+<h3 class="anchored" data-anchor-id="연구질문">연구질문</h3>
+<p><code>1</code> 운동방법에 따라 체중 감량 효과에 통계적으로 유의한 차이가 있는가?</p>
+<p><code>2</code> 식이요법에 따라 체중 감량 효과에 통계적으로 유의한 차이가 있는가?</p>
+<p><code>3</code> 차이가 존재한다면, 어느 운동방법 및 식이요법 수준 사이에서 유의한 차이가 나타나는가?</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>셀(각 조합별)당 관측치가 1개(<code>n=1</code>)이므로 오차항과 교호작용항을 분리할 수 없다. 따라서 두 요인이 서로 독립적으로 작용한다는 **가법모형(Additive Model)**을 적용하며,</p></li>
+<li><p>분석 전 <strong>Tukey 가법성 검정(Tukey’s Test of Additivity)</strong> 을 통해 교호작용 부재 가정을 검증한다.</p></li>
+</ol>
+</div>
+</div>
+
+
 </section>
 </section>
 </section>
