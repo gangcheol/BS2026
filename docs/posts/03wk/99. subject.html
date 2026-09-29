@@ -274,6 +274,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#연구질문" id="toc-연구질문" class="nav-link" data-scroll-target="#연구질문">연구질문</a></li>
   </ul></li>
+  <li><a href="#가설설정-1" id="toc-가설설정-1" class="nav-link" data-scroll-target="#가설설정-1">2. 가설설정</a></li>
+  <li><a href="#eda-2" id="toc-eda-2" class="nav-link" data-scroll-target="#eda-2">3. EDA</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1510,7 +1512,7 @@ RUN;</code></pre>
 <p>식이요법과 운동방법이 체중 감량에 미치는 영향분석</p>
 <section id="연구배경-2" class="level2">
 <h2 class="anchored" data-anchor-id="연구배경-2">1. 연구배경</h2>
-<p>다이어트 연구자가 20명의 참가지(<code>N=20</code>)를 대상으로 **‘운동방법 5가지(A, B, C, D, E)’**와 **‘식이요법 4가지(Ⅰ, Ⅱ, Ⅲ, Ⅳ)’**의 조합(총 20개 셀)에 각 1명씩 임의 배정하고, 3주간 처치 후 체중 감량(kg)을 측정하였다.</p>
+<p>다이어트 연구자가 20명의 참가지(<code>N=20</code>)를 대상으로 <strong>‘운동방법 5가지(A, B, C, D, E)’</strong> 와 <strong>‘식이요법 4가지(Ⅰ, Ⅱ, Ⅲ, Ⅳ)’</strong> 의 조합(총 20개 셀)에 각 1명씩 임의 배정하고, 3주간 처치 후 체중 감량(kg)을 측정하였다.</p>
 <section id="연구질문" class="level3">
 <h3 class="anchored" data-anchor-id="연구질문">연구질문</h3>
 <p><code>1</code> 운동방법에 따라 체중 감량 효과에 통계적으로 유의한 차이가 있는가?</p>
@@ -1527,14 +1529,113 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>셀(각 조합별)당 관측치가 1개(<code>n=1</code>)이므로 오차항과 교호작용항을 분리할 수 없다. 따라서 두 요인이 서로 독립적으로 작용한다는 **가법모형(Additive Model)**을 적용하며,</p></li>
+<li><p>셀(각 조합별)당 관측치가 1개(<code>n=1</code>)이므로 오차항과 교호작용항을 분리할 수 없다. 따라서 두 요인이 서로 독립적으로 작용한다는 <strong>가법모형(Additive Model)</strong> 을 적용하며,</p></li>
 <li><p>분석 전 <strong>Tukey 가법성 검정(Tukey’s Test of Additivity)</strong> 을 통해 교호작용 부재 가정을 검증한다.</p></li>
 </ol>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="가설설정-1" class="level2">
+<h2 class="anchored" data-anchor-id="가설설정-1">2. 가설설정</h2>
+<p>운동방법 <span class="math inline">\(i\)</span>의 효과를 <span class="math inline">\(\alpha_i \; (i=1,\dots,5)\)</span>, 식이요법 <span class="math inline">\(j\)</span>의 효과를 <span class="math inline">\(\beta_j \; (j=1,\dots,4)\)</span>라 할 때, 검정가설은 다음과 같다.</p>
+<p><code>1</code> 통계적 모형</p>
+<p><span class="math display">\[y_{ij} = \mu + \alpha_i + \beta_j + \varepsilon_{ij} \quad (i = 1,\dots,5; \quad j = 1,\dots,4), \quad \varepsilon_{ij} \overset{iid}{\sim} N(0, \sigma^2)\]</span></p>
+<p><code>2</code> 가설 1 (운동방법의 주 효과)</p>
+<ul>
+<li><p>귀무가설 (<span class="math inline">\(H_0\)</span>): <span class="math inline">\(\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4 = \alpha_5 = 0\)</span> (운동방법에 따른 체중 감량 차이가 없다)</p></li>
+<li><p>대립가설 (<span class="math inline">\(H_1\)</span>): 적어도 하나의 <span class="math inline">\(\alpha_i \neq 0\)</span> (적어도 한 운동방법의 효과가 다르다)</p></li>
+</ul>
+<p><code>3</code> 가설 2 (식이요법의 주효과)</p>
+<ul>
+<li><p>귀무가설 (<span class="math inline">\(H_0\)</span>): <span class="math inline">\(\beta_1 = \beta_2 = \beta_3 = \beta_4 = 0\)</span> (식이요법에 따른 체중 감량 차이가 없다)</p></li>
+<li><p>대립가설 (<span class="math inline">\(H_1\)</span>): 적어도 하나의 <span class="math inline">\(\beta_j \neq 0\)</span> (적어도 한 식이요법의 효과가 다르다)</p></li>
+</ul>
+</section>
+<section id="eda-2" class="level2">
+<h2 class="anchored" data-anchor-id="eda-2">3. EDA</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">평균 비교표</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p><strong>[표 1] 체중 감량(kg) 이원표 및 주변평균 (<span class="math inline">\(N=20\)</span>)</strong>[cite: 3]</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>운동 &nbsp;식이</th>
+<th>Ⅰ</th>
+<th>Ⅱ</th>
+<th>Ⅲ</th>
+<th>Ⅳ</th>
+<th>운동 행평균 (<span class="math inline">\(\bar{y}_{i\cdot}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>7.0</td>
+<td>5.3</td>
+<td>4.9</td>
+<td>8.8</td>
+<td>6.50</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>9.9</td>
+<td>5.7</td>
+<td>7.6</td>
+<td>8.9</td>
+<td>8.03</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>8.5</td>
+<td>4.7</td>
+<td>5.5</td>
+<td>8.1</td>
+<td>6.70</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>5.1</td>
+<td>3.5</td>
+<td>2.8</td>
+<td>3.3</td>
+<td>3.68</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>10.3</td>
+<td>7.7</td>
+<td>8.4</td>
+<td>9.1</td>
+<td>8.88</td>
+</tr>
+<tr class="even">
+<td><strong>식이 열평균 (<span class="math inline">\(\bar{y}_{\cdot j}\)</span>)</strong></td>
+<td>8.16</td>
+<td>5.38</td>
+<td>5.84</td>
+<td>7.64</td>
+<td><strong>전체평균:</strong> 6.76</td>
+</tr>
+</tbody>
+</table>
+<p><code>1</code> 운동방법 중에서는 E 집단(<span class="math inline">\(\mathbf{8.88\,kg}\)</span>)과 B 집단(<span class="math inline">\(\mathbf{8.03\,kg}\)</span>)의 감량 폭이 가장 컸고, D 집단(<span class="math inline">\(\mathbf{3.68\,kg}\)</span>)이 가장 낮았다.</p>
+<p><code>2</code> 식이요법 중에서는 Ⅰ 요법(<span class="math inline">\(\mathbf{8.16\,kg}\)</span>)과 Ⅳ 요법(<span class="math inline">\(\mathbf{7.64\,kg}\)</span>)이 우수했으며, Ⅱ 요법(<span class="math inline">\(\mathbf{5.38\,kg}\)</span>)과 Ⅲ 요법(<span class="math inline">\(\mathbf{5.84\,kg}\)</span>)은 감량 폭이 적었다.</p>
+</div>
+</div>
+</div>
+
+
 </section>
 </section>
 
