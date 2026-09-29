@@ -28,6 +28,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -264,9 +299,200 @@ window.Quarto = {
 <section id="번" class="level1">
 <h1>2번</h1>
 <p>다음은 흑색종(melanoma) 환자들의 조직생검으로부터 얻은 데이터로서 40개의 림프구와 40개의 종양세포의 직경에 대한 데이터이다.(단위: <span class="math inline">\(\mu\)</span>m)</p>
-<center>
-<img src="연습문제 3-2번.jpg" width="500">
-</center>
+<details>
+<summary>
+자료 생성 코드
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA ex3_2<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    INPUT group $ x <span class="op">@@;</span> <span class="op">/*</span> group: 세포 종류, x: 측정값, <span class="op">@@</span>: 한 줄에 여러 관측치 연결 입력 <span class="op">*/</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    DATALINES<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">9.0</span> Lymphocyte  <span class="fl">9.4</span> Lymphocyte  <span class="fl">4.7</span> Lymphocyte  <span class="fl">4.8</span> Lymphocyte  <span class="fl">8.9</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">4.9</span> Lymphocyte  <span class="fl">8.4</span> Lymphocyte  <span class="fl">5.9</span> Lymphocyte  <span class="fl">6.3</span> Lymphocyte  <span class="fl">5.7</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">5.0</span> Lymphocyte  <span class="fl">3.5</span> Lymphocyte  <span class="fl">7.8</span> Lymphocyte <span class="fl">10.4</span> Lymphocyte  <span class="fl">8.0</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">8.0</span> Lymphocyte  <span class="fl">8.6</span> Lymphocyte  <span class="fl">7.0</span> Lymphocyte  <span class="fl">6.8</span> Lymphocyte  <span class="fl">7.1</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">5.7</span> Lymphocyte  <span class="fl">7.6</span> Lymphocyte  <span class="fl">6.2</span> Lymphocyte  <span class="fl">7.1</span> Lymphocyte  <span class="fl">7.4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">8.7</span> Lymphocyte  <span class="fl">4.9</span> Lymphocyte  <span class="fl">7.4</span> Lymphocyte  <span class="fl">6.4</span> Lymphocyte  <span class="fl">7.1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">6.3</span> Lymphocyte  <span class="fl">8.8</span> Lymphocyte  <span class="fl">8.8</span> Lymphocyte  <span class="fl">5.2</span> Lymphocyte  <span class="fl">7.1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Lymphocyte  <span class="fl">5.3</span> Lymphocyte  <span class="fl">4.7</span> Lymphocyte  <span class="fl">8.4</span> Lymphocyte  <span class="fl">6.4</span> Lymphocyte  <span class="fl">8.3</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">12.6</span> Tumor <span class="fl">14.6</span> Tumor <span class="fl">16.2</span> Tumor <span class="fl">23.9</span> Tumor <span class="fl">23.3</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">17.1</span> Tumor <span class="fl">20.0</span> Tumor <span class="fl">21.0</span> Tumor <span class="fl">19.1</span> Tumor <span class="fl">19.4</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">16.7</span> Tumor <span class="fl">15.9</span> Tumor <span class="fl">15.8</span> Tumor <span class="fl">16.0</span> Tumor <span class="fl">17.9</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">13.4</span> Tumor <span class="fl">19.1</span> Tumor <span class="fl">16.6</span> Tumor <span class="fl">18.9</span> Tumor <span class="fl">18.7</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">20.0</span> Tumor <span class="fl">17.8</span> Tumor <span class="fl">13.9</span> Tumor <span class="fl">22.1</span> Tumor <span class="fl">13.9</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">18.3</span> Tumor <span class="fl">22.8</span> Tumor <span class="fl">13.0</span> Tumor <span class="fl">17.9</span> Tumor <span class="fl">15.2</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">17.7</span> Tumor <span class="fl">15.1</span> Tumor <span class="fl">16.9</span> Tumor <span class="fl">16.4</span> Tumor <span class="fl">22.8</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Tumor <span class="fl">19.4</span> Tumor <span class="fl">19.6</span> Tumor <span class="fl">18.4</span> Tumor <span class="fl">18.2</span> Tumor <span class="fl">20.7</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">림프구 세포(Lymphocyte) 직경 측정값</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">종양 세포(Tumor) 직경 측정값</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>[표 1] 림프구 세포(Lymphocyte) 직경 측정값 (단위: <span class="math inline">\(\mu\)</span>m, <span class="math inline">\(n=40\)</span>)</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">구분</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1 ~ 5</strong></td>
+<td style="text-align: center;">9.0</td>
+<td style="text-align: center;">9.4</td>
+<td style="text-align: center;">4.7</td>
+<td style="text-align: center;">4.8</td>
+<td style="text-align: center;">8.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6 ~ 10</strong></td>
+<td style="text-align: center;">4.9</td>
+<td style="text-align: center;">8.4</td>
+<td style="text-align: center;">5.9</td>
+<td style="text-align: center;">6.3</td>
+<td style="text-align: center;">5.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>11 ~ 15</strong></td>
+<td style="text-align: center;">5.0</td>
+<td style="text-align: center;">3.5</td>
+<td style="text-align: center;">7.8</td>
+<td style="text-align: center;">10.4</td>
+<td style="text-align: center;">8.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>16 ~ 20</strong></td>
+<td style="text-align: center;">8.0</td>
+<td style="text-align: center;">8.6</td>
+<td style="text-align: center;">7.0</td>
+<td style="text-align: center;">6.8</td>
+<td style="text-align: center;">7.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>21 ~ 25</strong></td>
+<td style="text-align: center;">5.7</td>
+<td style="text-align: center;">7.6</td>
+<td style="text-align: center;">6.2</td>
+<td style="text-align: center;">7.1</td>
+<td style="text-align: center;">7.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>26 ~ 30</strong></td>
+<td style="text-align: center;">8.7</td>
+<td style="text-align: center;">4.9</td>
+<td style="text-align: center;">7.4</td>
+<td style="text-align: center;">6.4</td>
+<td style="text-align: center;">7.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>31 ~ 35</strong></td>
+<td style="text-align: center;">6.3</td>
+<td style="text-align: center;">8.8</td>
+<td style="text-align: center;">8.8</td>
+<td style="text-align: center;">5.2</td>
+<td style="text-align: center;">7.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>36 ~ 40</strong></td>
+<td style="text-align: center;">5.3</td>
+<td style="text-align: center;">4.7</td>
+<td style="text-align: center;">8.4</td>
+<td style="text-align: center;">6.4</td>
+<td style="text-align: center;">8.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>[표 2] 종양 세포(Tumor) 직경 측정값 (단위: <span class="math inline">\(\mu\)</span>m, <span class="math inline">\(n=40\)</span>)</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">구분</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1 ~ 5</strong></td>
+<td style="text-align: center;">12.6</td>
+<td style="text-align: center;">14.6</td>
+<td style="text-align: center;">16.2</td>
+<td style="text-align: center;">23.9</td>
+<td style="text-align: center;">23.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6 ~ 10</strong></td>
+<td style="text-align: center;">17.1</td>
+<td style="text-align: center;">20.0</td>
+<td style="text-align: center;">21.0</td>
+<td style="text-align: center;">19.1</td>
+<td style="text-align: center;">19.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>11 ~ 15</strong></td>
+<td style="text-align: center;">16.7</td>
+<td style="text-align: center;">15.9</td>
+<td style="text-align: center;">15.8</td>
+<td style="text-align: center;">16.0</td>
+<td style="text-align: center;">17.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>16 ~ 20</strong></td>
+<td style="text-align: center;">13.4</td>
+<td style="text-align: center;">19.1</td>
+<td style="text-align: center;">16.6</td>
+<td style="text-align: center;">18.9</td>
+<td style="text-align: center;">18.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>21 ~ 25</strong></td>
+<td style="text-align: center;">20.0</td>
+<td style="text-align: center;">17.8</td>
+<td style="text-align: center;">13.9</td>
+<td style="text-align: center;">22.1</td>
+<td style="text-align: center;">13.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>26 ~ 30</strong></td>
+<td style="text-align: center;">18.3</td>
+<td style="text-align: center;">22.8</td>
+<td style="text-align: center;">13.0</td>
+<td style="text-align: center;">17.9</td>
+<td style="text-align: center;">15.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>31 ~ 35</strong></td>
+<td style="text-align: center;">17.7</td>
+<td style="text-align: center;">15.1</td>
+<td style="text-align: center;">16.9</td>
+<td style="text-align: center;">16.4</td>
+<td style="text-align: center;">22.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>36 ~ 40</strong></td>
+<td style="text-align: center;">19.4</td>
+<td style="text-align: center;">19.6</td>
+<td style="text-align: center;">18.4</td>
+<td style="text-align: center;">18.2</td>
+<td style="text-align: center;">20.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">(1)</h2>
 <p>림프구세포의 크기가 조양세포의 크기보다 작다고 볼 수 있는가? 5% 유의수준으로 SAS를 이용하여 가설 검정하라.</p>
@@ -278,12 +504,39 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="sol">Sol</h3>
 <section id="연구배경-문제-상황-및-분석-목적" class="level4">
 <h4 class="anchored" data-anchor-id="연구배경-문제-상황-및-분석-목적">1. 연구배경 (문제 상황 및 분석 목적)</h4>
-<p>본 연구는 흑색종(Melanoma) 환자의 조직생검에서 얻은 두 세포 집단인 <strong>림프구 세포(Lymphocyte, <span class="math inline">\(n_1=40\)</span>)</strong> 와 <strong>종양 세포(Tumor, <span class="math inline">\(n_2=40\)</span>)</strong> 의 직경(단위: <span class="math inline">\(\mu\text{m}\)</span>) 데이터를 비교·분석한다. 주요 목적은 림프구 세포의 크기가 종양 세포의 크기보다 통계적으로 유의하게 작다고 볼 수 있는지 <span class="math inline">\(5\%\)</span> 유의수준에서 가설검정을 수행하는 것이다.</p>
+<p><code>1</code> 본 연구는 흑색종(Melanoma) 환자의 조직생검에서 얻은 두 세포 집단인 <strong>림프구 세포(Lymphocyte, <span class="math inline">\(n_1=40\)</span>)</strong> 와 <strong>종양 세포(Tumor, <span class="math inline">\(n_2=40\)</span>)</strong> 의 직경(단위: <span class="math inline">\(\mu\text{m}\)</span>) 데이터를 비교·분석한다.</p>
+<p><code>2</code> 주요 목적은 림프구 세포의 크기가 종양 세포의 크기보다 통계적으로 유의하게 작다고 볼 수 있는지 <span class="math inline">\(5\%\)</span> 유의수준에서 가설검정을 수행하는 것이다.</p>
 </section>
 <section id="가설설정-귀무가설대립가설" class="level4">
 <h4 class="anchored" data-anchor-id="가설설정-귀무가설대립가설">2. 가설설정 (귀무가설/대립가설)</h4>
 <p><code>1</code> 통계적 모형</p>
 <p><span class="math display">\[y_{ij} = \mu + \tau_i + \varepsilon_{ij},\quad (i = 1: \text{Lymphocyte},\,\,2: \text{Tumor}; \,\,j = 1, \dots, 40)\]</span></p>
+<details>
+<summary>
+기호 설명
+</summary>
+<ul>
+<li><p><span class="math inline">\(y_{ij}\)</span> (반응변수 / 관측값)</p>
+<ul>
+<li><span class="math inline">\(i\)</span>번째 세포 집단(1: 림프구, 2: 종양)에 속한 <span class="math inline">\(j\)</span>번째 개별 세포의 크기(직경, <span class="math inline">\(\mu\text{m}\)</span>)</li>
+</ul></li>
+<li><p><span class="math inline">\(\mu\)</span> (전체평균, Overall Mean)</p>
+<ul>
+<li>두 세포 집단 전체를 아우르는 기준 모평균값</li>
+</ul></li>
+<li><p><span class="math inline">\(\tau_i\)</span> (집단효과, Group Effect): <span class="math inline">\(i\)</span>번째 세포 종류가 세포 크기에 미치는 고유한 효과(처리 효과)</p>
+<ul>
+<li><span class="math inline">\(\tau_1\)</span>: 림프구 세포(Lymphocyte) 집단의 효과 (<span class="math inline">\(\mu_1 = \mu + \tau_1\)</span>)</li>
+<li><span class="math inline">\(\tau_2\)</span>: 종양 세포(Tumor) 집단의 효과 (<span class="math inline">\(\mu_2 = \mu + \tau_2\)</span>)</li>
+</ul></li>
+<li><p><span class="math inline">\(\varepsilon_{ij}\)</span> (오차항, Random Error): 모형으로 설명되지 않는 <span class="math inline">\(i\)</span>번째 집단 내 <span class="math inline">\(j\)</span>번째 관측치의 확률적 오차</p>
+<ul>
+<li><em>(가정: 오차항은 서로 독립이고 평균이 0인 정규분포 <span class="math inline">\(\varepsilon_{ij} \sim N(0, \sigma_i^2)\)</span>를 따름)</em></li>
+</ul></li>
+<li><p><span class="math inline">\(i\)</span> (집단 인덱스): 세포의 종류를 나타내는 첨자 (<span class="math inline">\(i = 1\)</span>: 림프구 세포, <span class="math inline">\(i = 2\)</span>: 종양 세포)</p></li>
+<li><p><span class="math inline">\(j\)</span> (관측치 인덱스): 각 세포 집단 내 개별 세포 관측치의 번호를 나타내는 첨자 (<span class="math inline">\(j = 1, 2, \dots, 40\)</span>)</p></li>
+</ul>
+</details>
 <p><code>2</code> 모평균 정의</p>
 <ul>
 <li><span class="math inline">\(\mu_1\)</span>: 림프구 세포 크기(직경)의 모평균</li>
@@ -342,24 +595,38 @@ window.Quarto = {
 </table>
 <p><br></p>
 <p><code>1</code> 정규성 검정 (Shapiro-Wilk Test)</p>
+<details>
+<summary>
+정규성 검정 코드
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="fl">1.</span> EDA 및 정규성 검정 (Shapiro<span class="op">-</span>Wilk) <span class="op">*/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>PROC SORT DATA<span class="op">=</span>ex3_2<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    BY group<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="op">=</span>ex3_2 NORMAL PLOT<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    BY group<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    VAR x<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <ul>
 <li>림프구 세포: <span class="math inline">\(W = 0.9777, \; p = 0.6046\)</span> (<span class="math inline">\(p &gt; 0.05\)</span>로 정규성 만족)</li>
 <li>종양 세포: <span class="math inline">\(W = 0.9805, \; p = 0.7092\)</span> (<span class="math inline">\(p &gt; 0.05\)</span>로 정규성 만족)</li>
 </ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">림프구 (Lymphocyte)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">종양 (Tumor)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">림프구 vs 종양 평균 비교</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">림프구 (Lymphocyte)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">종양 (Tumor)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">림프구 vs 종양 평균 비교</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <center>
 <img src="3-2. 림프구 확률분포.PNG" width="600">
 </center>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <center>
 <img src="3-2. 종양 확률분포.PNG" width="600">
 </center>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <center>
 <img src="3-2. 림프구 vs 종양.PNG" width="600">
 </center>
@@ -367,6 +634,15 @@ window.Quarto = {
 </div>
 </div>
 <p><code>2</code> 등분산성 검정 (Folded F Test)</p>
+<details>
+<summary>
+등분산성 및 평균비교 검정 코드
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PROC TTEST DATA<span class="op">=</span>ex3_2 SIDES<span class="op">=</span>L ALPHA<span class="op">=</span><span class="fl">0.05</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    CLASS group<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    VAR x<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <ul>
 <li><p><span class="math inline">\(F = \frac{s_{\text{Tumor}}^2}{s_{\text{Lymphocyte}}^2} = \frac{8.2525}{2.5467} = 3.2405 \; (df_1 = 39, df_2 = 39)\)</span></p></li>
 <li><p><span class="math inline">\(p\text{-value} = 0.0004\)</span></p></li>
@@ -377,33 +653,48 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="분석모형적합">4. 분석/모형적합</h4>
 <p><code>1</code> 두 독립집단 데이터가 정규성 가정은 만족하지만 등분산 가정이 기각되었으므로,</p>
 <p><code>2</code> <strong>Satterthwaite 근사법을 적용한 이분산 독립 2표본 t-검정(Satterthwaite/Welch Two-sample t-test)을 선택</strong></p>
-<p><code>3</code> 보완적으로 비모수 검정인 Wilcoxon 순위합 검정도 병행 확인</p>
+<p><code>3</code> 보완적으로 비모수 검정인 Wilcoxon 순위합 검정도 병행 확인 <span class="math inline">\(\to\)</span> (소표본이므로 <code>Robust함을 확보하기 위함.</code>)</p>
 </section>
 <section id="결과해석---적합결과-및-검정통계량-해석" class="level4">
 <h4 class="anchored" data-anchor-id="결과해석---적합결과-및-검정통계량-해석">5. 결과해석 - 적합결과 및 검정통계량 해석</h4>
 <p>SAS 프로그램에서 <code>PROC TTEST</code> 산출 결과는 다음과 같다.</p>
 <p><code>1</code> <strong>등분산 F-검정 (Equality of Variances)</strong> - <span class="math inline">\(F = 3.24, \; df=(39, 39), \; p = 0.0004\)</span> (이분산성)</p>
 <p><code>2</code> Satterthwaite t-검정 (SIDES=L, 이분산 적용)</p>
-<ul>
-<li>검정통계량 <span class="math inline">\(t = -21.09\)</span></li>
-<li>근사 자유도 <span class="math inline">\(df = 60.98\)</span></li>
-<li>단측 <span class="math inline">\(p\text{-value} &lt; 0.0001\)</span> (<span class="math inline">\(5.28 \times 10^{-30}\)</span>)</li>
-</ul>
-<p><code>3</code> 비모수 Wilcoxon 순위합 검정 결과 - 정규근사 <span class="math inline">\(Z = -7.66, \; p &lt; 0.0001\)</span></p>
+<p><span class="math display">\[t = \frac{(\bar{X} - \bar{Y}) - \delta}{\sqrt{s_1^2/n_1 + s_2^2/n_2}}, \qquad \nu = \frac{(w_1 + w_2)^2}{w_1^2/(n_1 - 1) + w_2^2/(n_2 - 1)}, \qquad w_i = \frac{s_i^2}{n_i}\]</span></p>
+<details>
+<summary>
+수식 대입 결과
+</summary>
+<p><span class="math display">\[w_1 = \frac{1.596^2}{40} = 0.0637, \quad w_2 = \frac{2.873^2}{40} = 0.2063 \quad \Rightarrow \quad \nu = \frac{(0.0637 + 0.2063)^2}{0.0637^2/39 + 0.2063^2/39} \approx 60.98\]</span> <span class="math display">\[t = \frac{6.950 - 17.908}{\sqrt{0.0637 + 0.2063}} \approx -21.09\]</span> <strong>결론</strong>: 귀무가설 기각 (<span class="math inline">\(p &lt; 0.0001\)</span>) — 림프구 세포의 크기가 종양 세포보다 통계적으로 유의하게 작음. <em>(참고: 자유도가 60.98로 정수가 아닌 이유는 두 표본의 분산 차이와 정보량을 비대칭적으로 반영하기 때문)</em></p>
+</details>
+<p><code>3</code> 비모수 Wilcoxon 순위합 검정 결과</p>
+<details>
+<summary>
+Wilcoxon 순위합 검정 코드
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> <span class="fl">3.</span> 비모수 검정 (Wilcoxon 순위합 검정 <span class="op">/</span> Mann<span class="op">-</span>Whitney U test) <span class="op">*/</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>PROC NPAR1WAY DATA<span class="op">=</span>ex3_2 WILCOXON<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    CLASS group<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    VAR x<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<p><code>1</code> 본 자료는 정규성 가정을 만족하나 표본의 수가 적어 <code>Robust</code>함을 검증하기 위해 정규성 가정이 깨지고, 이분산일 경우 적용하는 <code>Wilcoxon 순위합 검정</code>을 함께 살펴봄.</p>
+<p><code>2</code> 검정결과 정규근사 <span class="math inline">\(Z = -7.66, \; p &lt; 0.0001\)</span>으로 단측 <span class="math inline">\(p\)</span>-값이 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>보다 현저히 작으므로(<span class="math inline">\(p &lt; 0.0001\)</span>), 귀무가설 <span class="math inline">\(H_0\)</span>를 강력히 기각.</p>
+<p><code>3</code> <strong>즉, 림프구 세포의 평균 크기가 종양 세포의 평균 크기보다 전반적으로 더 낮은 경향이 있었다.</strong></p>
 </section>
 <section id="결론" class="level4">
 <h4 class="anchored" data-anchor-id="결론">6. 결론</h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">2-(1)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">2-(2)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">2-(1)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">2-(2)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p><code>1</code> 독립 2-표본 t-검정을 이용하여 림프구 세포와 종양 세포의 크기(직경) 평균을 비교한 결과,</p>
 <p><code>2</code> 림프구 세포(<span class="math inline">\(n_1=40\)</span>)의 평균은 <span class="math inline">\(6.95\,\mu\text{m}\,(SD=1.60)\)</span>, 종양 세포(<span class="math inline">\(n_2=40\)</span>)의 평균은 <span class="math inline">\(17.91\,\mu\text{m}\,(SD=2.87)\)</span>이었다.</p>
 <p><code>3</code> 등분산성 검정 결과 <span class="math inline">\(F = 3.24, p = 0.0004\)</span>로 등분산 가정이 기각되어 Satterthwaite 근사법을 적용.</p>
 <p><code>4</code> 검정 결과 <span class="math inline">\(t(60.98) = -21.09\)</span>, 단측 <span class="math inline">\(p &lt; 0.0001\)</span>로 통계적으로 매우 유의한 차이가 있었음.</p>
 <p><code>5</code> 따라서 유의수준 5%에서 림프구 세포의 <strong>평균</strong> 크기가 종양 세포의 <strong>평균</strong> 크기보다 <strong>통계적으로 유의하게 작다고 결론지을 수 있다.</strong></p>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p>독립 2표본 t-검정(Independent two-sample t-test)을 수행하기 위해 필요한 기본 가정은 다음과 같다</p>
 <p><code>1</code> <strong>독립성 가정 (Independence)</strong>: 두 집단(림프구 세포, 종양 세포) 내의 관측치들이 서로 독립적이어야 하며, 두 집단 간에도 서로 독립적으로 추출되어야 한다.</p>
 <p><code>2</code> <strong>정규성 가정 (Normality)</strong>: 각 집단에서 측정된 반응변수(세포 크기)의 모집단 분포가 정규분포를 따라야 한다 - (본 데이터는 <span class="math inline">\(n_1=40, n_2=40\)</span>으로 충분히 크고 Shapiro-Wilk 검정에서 <span class="math inline">\(p &gt; 0.05\)</span>로 정규성을 만족함)</p>
@@ -419,9 +710,109 @@ window.Quarto = {
 <section id="번-1" class="level1">
 <h1>4번</h1>
 <p>다음은 정신지체아를 둔 11명의 부모를 대상으로 아이들의 자립심을 길러주기 위한 교육을 전문가들로부터 받기 전과 받은 후의 지식 습득 점수를 측정한 자료이다.</p>
-<center>
-<img src="연습문제 3-4번.jpg" width="500">
-</center>
+<details>
+<summary>
+자료 생성 코드
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DATA ex3_4<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    INPUT <span class="bu">id</span> before after <span class="op">@@;</span> <span class="op">/*</span> <span class="bu">id</span>: 부모 번호, before: 사전 점수, after: 사후 점수 <span class="op">*/</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> after <span class="op">-</span> before<span class="op">;</span> <span class="op">/*</span> 점수 차이 변수 생성 (사후 <span class="op">-</span> 사전) <span class="op">*/</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    DATALINES<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">104</span> <span class="dv">108</span> <span class="dv">2</span> <span class="dv">116</span> <span class="dv">118</span> <span class="dv">3</span> <span class="dv">84</span> <span class="dv">89</span> <span class="dv">4</span> <span class="dv">77</span> <span class="dv">71</span> <span class="dv">5</span> <span class="dv">61</span> <span class="dv">66</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="dv">84</span> <span class="dv">83</span> <span class="dv">7</span> <span class="dv">81</span> <span class="dv">88</span> <span class="dv">8</span> <span class="dv">72</span> <span class="dv">76</span> <span class="dv">9</span> <span class="dv">61</span> <span class="dv">68</span> <span class="dv">10</span> <span class="dv">97</span> <span class="dv">96</span> <span class="dv">11</span> <span class="dv">84</span> <span class="dv">81</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">부모 ID (\(i\))</th>
+<th style="text-align: center;">사전 점수 (\(, x_i\))</th>
+<th style="text-align: center;">사후 점수 (\(, y_i\))</th>
+<th style="text-align: center;">점수 차이 (\(d_i = y_i - x_i\))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">104</td>
+<td style="text-align: center;">108</td>
+<td style="text-align: center;">+4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">116</td>
+<td style="text-align: center;">118</td>
+<td style="text-align: center;">+2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">89</td>
+<td style="text-align: center;">+5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;">77</td>
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">-6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">+5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">+7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">+4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">+7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">96</td>
+<td style="text-align: center;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">-3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>평균 (\({X}\))</strong></td>
+<td style="text-align: center;"><strong>81.909</strong></td>
+<td style="text-align: center;"><strong>84.000</strong></td>
+<td style="text-align: center;"><strong>+2.091</strong></td>
+</tr>
+</tbody>
+</table>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">(1)</h2>
 <p>교육을 받기 전과 받은 후의 차이가 있는지를 유의수준 5%하에서 검정하여라.</p>
@@ -525,6 +916,21 @@ window.Quarto = {
 </tbody>
 </table>
 <p><code>1</code> <strong>차이값(</strong><span class="math inline">\(d\)</span><strong>)의 정규성 검정 (Shapiro-Wilk Test)</strong> - <span class="math inline">\(W = 0.9170, \; p = 0.2941\)</span> - <span class="math inline">\(p &gt; 0.05\)</span>이므로 차이값 분포가 정규성을 만족한다는 가정을 충족</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">before</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">after</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<center>
+<img src="3-4. before.PNG" width="600">
+</center>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<center>
+<img src="3-4. after.PNG" width="600">
+</center>
+</div>
+</div>
+</div>
 </section>
 <section id="분석모형적합-1" class="level4">
 <h4 class="anchored" data-anchor-id="분석모형적합-1">4. 분석/모형적합</h4>
@@ -557,17 +963,17 @@ RUN;</code></pre>
 <section id="결론-1" class="level4">
 <h4 class="anchored" data-anchor-id="결론-1">6. 결론</h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">4-(1)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">4-(2)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">4-(3)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">4-(1)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">4-(2)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">4-(3)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p><code>1</code> 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>하에서 대응표본 t-검정을 실시한 결과, 검정통계량 <span class="math inline">\(t(10) = 1.62\)</span>, 양측 <span class="math inline">\(p\text{-value} = 0.1360\)</span>으로 나타남.</p>
 <p><code>2</code> 따라서 <span class="math inline">\(p\)</span>-값이 유의수준 <span class="math inline">\(0.05\)</span>보다 크므로(<span class="math inline">\(p &gt; 0.05\)</span>) 귀무가설 <span class="math inline">\(H_0\)</span>를 기각할 수 없다.</p>
 <p><code>3</code> <strong>즉, 가 교육 전과 후 부모들의 지식 습득 점수에는 통계적으로 유의한 차이가 있다고 볼 수 없다.</strong></p>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p><code>1</code> <span class="math inline">\(d\)</span>(점수차이)의 모평균 <span class="math inline">\(\mu_d\)</span>에 대한 95% 신뢰구간은 <span class="math inline">\([-0.7823, \; 4.9641]\)</span> (약 <span class="math inline">\([-0.78, \; 4.96]\)</span>점)이다.</p>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
 <p><code>1</code> <strong>(1)의 검정 결과</strong>: 귀무가설 <span class="math inline">\(H_0: \mu_d = 0\)</span>을 기각하지 못함 (차이가 유의하지 않음).</p>
 <p><code>2</code> <strong>(2)의 신뢰구간</strong>: 산출된 95% 신뢰구간 <span class="math inline">\([-0.7823, 4.9641]\)</span> 내에 귀무가설의 기준값인 ’0’이 포함되어 있다.</p>
 <p><code>3</code> <strong>결론</strong>:</p>
