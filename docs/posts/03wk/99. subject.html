@@ -214,11 +214,14 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sol" id="toc-sol" class="nav-link" data-scroll-target="#sol">Sol</a></li>
   </ul></li>
+  </ul></li>
   <li><a href="#번-1" id="toc-번-1" class="nav-link" data-scroll-target="#번-1">4번</a>
   <ul class="collapse">
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">(1)</a></li>
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">(2)</a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(3)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">(3)</a>
+  <ul class="collapse">
+  <li><a href="#sol-1" id="toc-sol-1" class="nav-link" data-scroll-target="#sol-1">sol</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -412,22 +415,172 @@ window.Quarto = {
 </section>
 </section>
 </section>
-<section id="번-1" class="level2">
-<h2 class="anchored" data-anchor-id="번-1">4번</h2>
+</section>
+<section id="번-1" class="level1">
+<h1>4번</h1>
 <p>다음은 정신지체아를 둔 11명의 부모를 대상으로 아이들의 자립심을 길러주기 위한 교육을 전문가들로부터 받기 전과 받은 후의 지식 습득 점수를 측정한 자료이다.</p>
-<section id="section-4" class="level3">
-<h3 class="anchored" data-anchor-id="section-4">(1)</h3>
+<center>
+<img src="연습문제 3-4번.jpg" width="500">
+</center>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">(1)</h2>
 <p>교육을 받기 전과 받은 후의 차이가 있는지를 유의수준 5%하에서 검정하여라.</p>
 </section>
-<section id="section-5" class="level3">
-<h3 class="anchored" data-anchor-id="section-5">(2)</h3>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">(2)</h2>
 <p>점수 차이의 모평균에 대한 95% 신뢰구간을 구하여라.</p>
 </section>
-<section id="section-6" class="level3">
-<h3 class="anchored" data-anchor-id="section-6">(3)</h3>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">(3)</h2>
 <p>(1)과 (2)사이의 연관성에 대하여 설명하여라.</p>
+<section id="sol-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-1">sol</h3>
+<section id="연구배경" class="level4">
+<h4 class="anchored" data-anchor-id="연구배경">1. 연구배경</h4>
+<p><code>1</code> 본 연구는 정신지체아를 둔 11명의 부모(<span class="math inline">\(n=11\)</span>)를 대상으로 자립심 향상 교육 실시 전(사전 점수, Before)과 실시 후(사후 점수, After)의 지식 습득 점수를 비교·분석한다.</p>
+<p><code>2</code> 동일한 연구 대상으로부터 처방(교육) 전후로 연속형 반응변수를 반복 측정한 짝지어진 자료(Paired data)이므로,</p>
+<p><code>3</code> 교육을 받기 전과 받은 후 지식 습득 점수에 통계적으로 유의한 차이가 있는지를 <span class="math inline">\(5\%\)</span> 유의수준에서 검정하고,</p>
+<p><code>4</code> 점수 차이 모평균의 <span class="math inline">\(95\%\)</span> 신뢰구간을 산출하는 것을 목적으로 한다.</p>
+</section>
+<section id="가설설정" class="level4">
+<h4 class="anchored" data-anchor-id="가설설정">2. 가설설정</h4>
+<p><code>1</code> 통계적 모형</p>
+<p><span class="math display">\[d_i = y_{\text{after}, i} - y_{\text{before}, i} \quad (i = 1, 2, \dots, 11), \quad d_1, d_2, \dots, d_{11} \overset{iid}{\sim} N(\mu_d, \sigma_d^2)\]</span></p>
+<details>
+<summary>
+기호 설명
+</summary>
+<ul>
+<li><span class="math inline">\(d_i\)</span>: <span class="math inline">\(i\)</span>번째 부모의 교육 전후 지식 습득 점수 차이</li>
+<li><span class="math inline">\(y_{\text{after}, i}\)</span>: 교육 후 지식 습득 점수</li>
+<li><span class="math inline">\(y_{\text{before}, i}\)</span>: 교육 전 지식 습득 점수</li>
+<li><span class="math inline">\(\mu_d\)</span>: 교육 전후 점수 차이(<span class="math inline">\(\text{사후 점수} - \text{사전 점수}\)</span>)의 모평균</li>
+<li><span class="math inline">\(\sigma_d^{2}\)</span>: 교육 전후 점수 차이의 모분산</li>
+</ul>
+</details>
+<p><code>2</code> 검정가설(양측검정, Two-sided Test)</p>
+<ul>
+<li>귀무가설 (<span class="math inline">\(H_0\)</span>): <span class="math inline">\(\mu_d = 0\)</span>
+<ul>
+<li>교육 전과 후의 지식 습득 점수 <code>평균에 차이가 없다</code></li>
+</ul></li>
+<li>대립가설 (<span class="math inline">\(H_A\)</span>): <span class="math inline">\(\mu_d \neq 0\)</span>
+<ul>
+<li>교육 전과 후의 지식 습득 점수 <code>평균에 차이가 있다</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="eda" class="level4">
+<h4 class="anchored" data-anchor-id="eda">3. EDA</h4>
+<p>11명 부모의 사전, 사후, 차이값에 대한 기술통계량은 다음과 같다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">변수</th>
+<th style="text-align: center;">표본수(<span class="math inline">\(n\)</span>)</th>
+<th style="text-align: center;">평균</th>
+<th style="text-align: center;">표준편차 (<span class="math inline">\(s\)</span>)</th>
+<th style="text-align: center;">표준오차 (<span class="math inline">\(SE\)</span>)</th>
+<th style="text-align: center;">중앙값</th>
+<th style="text-align: center;">사분위수범위 (IQR)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>사전 점수 (Before)</strong></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">81.909</td>
+<td style="text-align: center;">17.067</td>
+<td style="text-align: center;">5.146</td>
+<td style="text-align: center;">84.000</td>
+<td style="text-align: center;">23.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>사후 점수 (After)</strong></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">84.000</td>
+<td style="text-align: center;">16.273</td>
+<td style="text-align: center;">4.906</td>
+<td style="text-align: center;">83.000</td>
+<td style="text-align: center;">22.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>점수 차이 (<span class="math inline">\(d = \text{After} - \text{Before}\)</span>)</strong></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">2.091</td>
+<td style="text-align: center;">4.277</td>
+<td style="text-align: center;">1.290</td>
+<td style="text-align: center;">2.000</td>
+<td style="text-align: center;">7.000</td>
+</tr>
+</tbody>
+</table>
+<p><code>1</code> <strong>차이값(</strong><span class="math inline">\(d\)</span><strong>)의 정규성 검정 (Shapiro-Wilk Test)</strong> - <span class="math inline">\(W = 0.9170, \; p = 0.2941\)</span> - <span class="math inline">\(p &gt; 0.05\)</span>이므로 차이값 분포가 정규성을 만족한다는 가정을 충족</p>
+</section>
+<section id="분석모형적합-1" class="level4">
+<h4 class="anchored" data-anchor-id="분석모형적합-1">4. 분석/모형적합</h4>
+<p><code>1</code> 차이값 <span class="math inline">\(d\)</span>에 대한 정규성이 충족하므로 <strong>모수적</strong> 방법인 대응표본 <code>t-검정(Paired t-test)</code>을 적용</p>
+<details>
+<summary>
+SAS 실행 코드
+</summary>
+<pre class="sas"><code>/* PROC TTEST의 PAIRED 문 사용*/
+PROC TTEST DATA=ex3_4 ALPHA=0.05;
+    PAIRED after*before; /* after - before 차이에 대한 t-검정 및 95% 신뢰구간 산출 */
+RUN;</code></pre>
+</details>
+</section>
+<section id="결과해석" class="level4">
+<h4 class="anchored" data-anchor-id="결과해석">5. 결과해석</h4>
+<p><code>1</code> SAS <code>PROC TTEST</code> 산출 결과는 다음과 같다.</p>
+<ul>
+<li>점수 차이 평균 (<span class="math inline">\(\bar{d}\)</span>): <span class="math inline">\(2.0909\)</span>점</li>
+<li>표준오차 (<span class="math inline">\(SE_{\bar{d}}\)</span>): <span class="math inline">\(1.2895\)</span>점</li>
+<li>자유도 (<span class="math inline">\(df\)</span>): <span class="math inline">\(n - 1 = 10\)</span></li>
+<li>검정통계량 (<span class="math inline">\(t\)</span>): <span class="math inline">\(t = \frac{\bar{d} - 0}{s_d / \sqrt{n}} = \frac{2.0909}{1.2895} = 1.6215 \approx 1.62\)</span></li>
+<li>양측 유의확률 (<span class="math inline">\(p\text{-value}\)</span>): <span class="math inline">\(p = 0.1360\)</span></li>
+<li>점수 차이 모평균(<span class="math inline">\(\mu_d\)</span>)에 대한 95% 신뢰구간:
+<ul>
+<li><span class="math inline">\(\bar{d} \pm t_{0.025, 10} \times SE_{\bar{d}} = 2.0909 \pm (2.2281 \times 1.2895) = [-0.7823, ; 4.9641]\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="결론-1" class="level4">
+<h4 class="anchored" data-anchor-id="결론-1">6. 결론</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">4-(1)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">4-(2)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">4-(3)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p><code>1</code> 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>하에서 대응표본 t-검정을 실시한 결과, 검정통계량 <span class="math inline">\(t(10) = 1.62\)</span>, 양측 <span class="math inline">\(p\text{-value} = 0.1360\)</span>으로 나타남.</p>
+<p><code>2</code> 따라서 <span class="math inline">\(p\)</span>-값이 유의수준 <span class="math inline">\(0.05\)</span>보다 크므로(<span class="math inline">\(p &gt; 0.05\)</span>) 귀무가설 <span class="math inline">\(H_0\)</span>를 기각할 수 없다.</p>
+<p><code>3</code> <strong>즉, 가 교육 전과 후 부모들의 지식 습득 점수에는 통계적으로 유의한 차이가 있다고 볼 수 없다.</strong></p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><code>1</code> <span class="math inline">\(d\)</span>(점수차이)의 모평균 <span class="math inline">\(\mu_d\)</span>에 대한 95% 신뢰구간은 <span class="math inline">\([-0.7823, \; 4.9641]\)</span> (약 <span class="math inline">\([-0.78, \; 4.96]\)</span>점)이다.</p>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p><code>1</code> <strong>(1)의 검정 결과</strong>: 귀무가설 <span class="math inline">\(H_0: \mu_d = 0\)</span>을 기각하지 못함 (차이가 유의하지 않음).</p>
+<p><code>2</code> <strong>(2)의 신뢰구간</strong>: 산출된 95% 신뢰구간 <span class="math inline">\([-0.7823, 4.9641]\)</span> 내에 귀무가설의 기준값인 ’0’이 포함되어 있다.</p>
+<p><code>3</code> <strong>결론</strong>:</p>
+<ul>
+<li>귀무가설 <span class="math inline">\(\mu_d = 0\)</span>을 유의수준 5%에서 기각할 수 없음을 의미하므로,</li>
+<li><strong>(1)의 가설검정 결과와 (2)의 신뢰구간 결과는 완전하게 일치하고 연관</strong>되어 있음을 의미한다!</li>
+</ul>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 </section>
