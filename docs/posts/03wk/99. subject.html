@@ -1063,7 +1063,7 @@ RUN;</code></pre>
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p><code>1</code> 유의수준 <span class="math inline">\(\alpha = 0.05\)</span>하에서 대응표본 t-검정을 실시한 결과, 검정통계량 <span class="math inline">\(t(10) = 1.62\)</span>, 양측 <span class="math inline">\(p\text{-value} = 0.1360\)</span>으로 나타남.</p>
 <p><code>2</code> 따라서 <span class="math inline">\(p\)</span>-값이 유의수준 <span class="math inline">\(0.05\)</span>보다 크므로(<span class="math inline">\(p &gt; 0.05\)</span>) 귀무가설 <span class="math inline">\(H_0\)</span>를 기각할 수 없다.</p>
-<p><code>3</code> <strong>즉, 가 교육 전과 후 부모들의 지식 습득 점수에는 통계적으로 유의한 차이가 있다고 볼 수 없다.</strong></p>
+<p><code>3</code> <strong>즉, 교육 전과 후 부모들의 지식 습득 점수에는 통계적으로 유의한 차이가 있다고 볼 수 없다.</strong></p>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p><code>1</code> <span class="math inline">\(d\)</span>(점수차이)의 모평균 <span class="math inline">\(\mu_d\)</span>에 대한 95% 신뢰구간은 <span class="math inline">\([-0.7823, \; 4.9641]\)</span> (약 <span class="math inline">\([-0.78, \; 4.96]\)</span>점)이다.</p>
@@ -1974,10 +1974,15 @@ Important
 <p><span class="math display">\[R^{2} = \frac{SS_{\text{운동방법}}+SS_{\text{식이요법}}}{\text{Total}} = \frac{62.65+27.43}{99.35} = 90.67\%\]</span></p>
 </div>
 <div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<details>
+<summary>
+사전 지식
+</summary>
 <p>앞선 분산분석표를 살펴본 결과, 각각의 방법에 따라 체중 감량 차이가 통계적으로 유의미했다. 따라서 구체적으로 어느 방법에서 체중감량 차이가 유의미한지 확인하기 위해, <code>SCHEFFE</code> 다중비교를 수행하였다.</p>
 <p><code>1</code> ANOVA 분석의 한계인 <strong>“정확히 몇 번 운동이 몇 번 운동보다 더 좋은지”</strong>, <strong>“몇 번 식단이 몇 번 식단보다 효과가 좋은지”</strong> 1대 1로 콕 짚어주지는 못함.</p>
 <p><code>2</code> 그렇다고 A-B, A-C, A-D… 이렇게 짝을 지어 단순 t-검정을 여러 번 반복하면, 우연히 차이가 난 것을 진짜 차이라고 잘못 판단할 <code>확률(1종 오류)</code>이 엄청나게 커짐</p>
 <p><code>3</code> Scheffé(셰페) 사후검정은 여러 그룹을 일일이 짝지어 비교할 때 발생하는 <strong>오류 확률을 엄격하게 통제해 주는 가장 안전하고 보수적인 통계 검정 방법</strong>을 사용</p>
+</details>
 <p><strong>Scheffé 다중비교 유의한 결과 요약</strong></p>
 <table class="table">
 <colgroup>
