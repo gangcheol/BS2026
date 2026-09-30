@@ -682,24 +682,20 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: center;">등분산성</td>
-<td style="text-align: center;">Levene</td>
+<td style="text-align: center;">F-test</td>
 <td style="text-align: center;">F = 3.2405</td>
 <td style="text-align: center;">0.0004</td>
 <td style="text-align: center;">등분산성 기각</td>
 </tr>
+<tr class="even">
+<td style="text-align: center;">등분산성</td>
+<td style="text-align: center;">Levene’s test</td>
+<td style="text-align: center;">F = 444.73</td>
+<td style="text-align: center;">&lt;.0001</td>
+<td style="text-align: center;">등분산성 기각</td>
+</tr>
 </tbody>
 </table>
-<p><code>1</code> 정규성 검정 (Shapiro-Wilk Test)</p>
-<ul>
-<li>림프구 세포: <span class="math inline">\(W = 0.9777, \; p = 0.6046\)</span> (<span class="math inline">\(p &gt; 0.05\)</span>로 정규성 만족)</li>
-<li>종양 세포: <span class="math inline">\(W = 0.9805, \; p = 0.7092\)</span> (<span class="math inline">\(p &gt; 0.05\)</span>로 정규성 만족)</li>
-</ul>
-<p><code>2</code> 등분산성 검정 (Folded F Test)</p>
-<ul>
-<li><p><span class="math inline">\(F = \frac{s_{\text{Tumor}}^2}{s_{\text{Lymphocyte}}^2} = \frac{8.2525}{2.5467} = 3.2405 \; (df_1 = 39, df_2 = 39)\)</span></p></li>
-<li><p><span class="math inline">\(p\text{-value} = 0.0004\)</span></p></li>
-<li><p>유의수준 <span class="math inline">\(0.05\)</span>에서 <span class="math inline">\(p &lt; 0.05\)</span>이므로 <strong>“두 집단의 모분산이 같다”는 등분산 가정이 기각(이분산성 확인)</strong> 된다.</p></li>
-</ul>
 </div>
 <div id="tabset-2-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-6-tab">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -717,11 +713,19 @@ window.Quarto = {
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a> CLASS group<span class="op">;</span> <span class="op">/*</span> 집단 구분 변수 <span class="op">*/</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a> VAR diameter<span class="op">;</span> <span class="op">/*</span> 반응변수 <span class="op">*/</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> (<span class="dv">2</span>) 정규성 점검 (Shapiro<span class="op">-</span>Wilk) <span class="op">*/</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="op">=</span>cell NORMAL<span class="op">;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a> CLASS group<span class="op">;</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a> VAR diameter<span class="op">;</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="op">/*</span> (<span class="dv">2</span>) 정규성 점검 (Shapiro<span class="op">-</span>Wilk) <span class="op">*/</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="op">=</span>cell NORMAL<span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a> CLASS group<span class="op">;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a> VAR diameter<span class="op">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>PROC GLM DATA<span class="op">=</span>ex3_2<span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    CLASS group<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    MODEL x <span class="op">=</span> group<span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    MEANS group <span class="op">/</span> HOVTEST<span class="op">=</span>LEVENE<span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -808,9 +812,9 @@ Wilcoxon 순위합 검정 코드
 <thead>
 <tr class="header">
 <th style="text-align: center;">부모 ID (\(i\))</th>
-<th style="text-align: center;">사전 점수 (\(, x_i\))</th>
-<th style="text-align: center;">사후 점수 (\(, y_i\))</th>
-<th style="text-align: center;">점수 차이 (\(d_i = y_i - x_i\))</th>
+<th style="text-align: center;">사전 점수 (<span class="math inline">\(y_{\text{before},i}\)</span>)</th>
+<th style="text-align: center;">사후 점수 (<span class="math inline">\(y_{\text{after},i}\)</span>)</th>
+<th style="text-align: center;">점수 차이 (<span class="math inline">\(d_i\)</span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -881,7 +885,7 @@ Wilcoxon 순위합 검정 코드
 <td style="text-align: center;">-3</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><strong>평균 (\({X}\))</strong></td>
+<td style="text-align: center;">평균</td>
 <td style="text-align: center;"><strong>81.909</strong></td>
 <td style="text-align: center;"><strong>84.000</strong></td>
 <td style="text-align: center;"><strong>+2.091</strong></td>
