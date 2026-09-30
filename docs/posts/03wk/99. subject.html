@@ -1384,7 +1384,11 @@ RUN;</code></pre>
 </tbody>
 </table>
 <p><code>1</code> <strong>Shapiro-Wilk 정규성 검정</strong>: 세 집단 모두 유의수준 5%에서 귀무가설(정규분포를 따른다)을 기각하지 못하여 <strong>정규성 가정을 충족</strong></p>
-<p><code>2</code> 등분산성 검정 (Levene / Bartlett Test) - 저 집단의 큰 분산(<span class="math inline">\(s^2 = 720.43\)</span>)으로 인해 등분산 가정이 기각되었다. - 따라서 <code>표준 일원분산분석표</code>와 함께 등분산 위반에 강건한 <strong>Welch 분산분석</strong> 및 비모수 <strong>Kruskal-Wallis 검정</strong>을 교차 검증으로 제시한다.</p>
+<p><code>2</code> 등분산성 검정 (Levene / Bartlett Test)</p>
+<ul>
+<li><p>저 집단의 큰 분산(<span class="math inline">\(s^2 = 720.43\)</span>)으로 인해 등분산 가정이 기각되었다.</p></li>
+<li><p>따라서 <code>표준 일원분산분석표</code>와 함께 등분산 위반에 강건한 <strong>Welch 분산분석</strong> 및 비모수 <strong>Kruskal-Wallis 검정</strong>을 교차 검증으로 제시한다.</p></li>
+</ul>
 </div>
 <div id="tabset-6-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-7-tab">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">/******************************************************************</span></span>
